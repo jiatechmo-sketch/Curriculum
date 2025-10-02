@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jonnathan Arango - CV Tecnológico</title>
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --main-color: #00ffff;
+      --bg-color: #0d1117;
+      --secondary-color: #0099ff;
+      --border-color: #333;
+      --code-green: #00ff00;
+      --code-purple: #c792ea;
+      --code-blue: #82aaff;
+      --code-comment: #5c6370;
+    }
+
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: 'Share Tech Mono', monospace;
+      overflow: hidden;
+      background: var(--bg-color);
+      color: var(--main-color);
+    }
+
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: -1;
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      max-width: 900px;
+      margin: 4rem auto;
+      padding: 2rem 3rem;
+      background-color: rgba(0, 0, 0, 0.85);
+      border-radius: 10px;
+      border: 1px solid var(--border-color);
+      box-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
+    }
+
+    header {
+      border-bottom: 2px solid var(--main-color);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.4rem;
+      color: var(--code-green);
+      text-shadow: 0 0 3px var(--main-color);
+    }
+
+    header p {
+      color: var(--code-comment);
+      font-style: italic;
+    }
+
+    section {
+      margin-top: 2rem;
+    }
+
+    h2 {
+      color: var(--code-purple);
+      border-bottom: 1px dashed var(--main-color);
+      padding-bottom: 0.5rem;
+    }
+
+    p, li {
+      color: #ffffff;
+      margin-bottom: 0.8rem;
+    }
+
+    ul {
+      list-style: none;
+      padding-left: 1rem;
+    }
+
+    li::before {
+      content: "• ";
+      color: var(--code-blue);
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 3rem;
+      font-size: 0.9rem;
+      color: var(--code-comment);
+      border-top: 1px dashed var(--border-color);
+      padding-top: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="background"></canvas>
+
+  <div class="container">
+    <header>
+      <h1>const Jonnathan_IA = "Educador + IA Developer";</h1>
+      <p>// Transformando la educación con inteligencia artificial</p>
+    </header>
+
+    <section>
+      <h2>🧠 Sobre mí</h2>
+      <p>/* Especializado en IA inclusiva, automatización visual y soluciones reproducibles. */</p>
+      <p>function transformarEducacion() { return "Visión computacional + PLN + estética tecnológica"; }</p>
+    </section>
+
+    <section>
+      <h2>🎓 Formación</h2>
+      <ul>
+        <li>let bachillerato = "Colegio César Conto";</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>📚 Cursos y conocimientos</h2>
+      <ul>
+        <li>const cursos = ["IA educativa", "Visión computacional", "Traductor de señas", "E.L.I.A.N.", "Excel Gantt"];</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>🛠️ Habilidades</h2>
+      <ul>
+        <li>skills.push("Soluciones educativas con IA");</li>
+        <li>skills.push("Automatización visual");</li>
+        <li>skills.push("Liderazgo técnico-pedagógico");</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>🌐 Idiomas</h2>
+      <p>const idiomas = ["Español", "Inglés"];</p>
+    </section>
+
+    <section>
+      <h2>📞 Contacto</h2>
+      <p>let email = "jiatechmo@gmail.com";</p>
+      <p>let telefono = "3128591013";</p>
+    </section>
+
+    <footer>
+      <p>// © 2025 Jonnathan_IA | Todos los derechos reservados</p>
+    </footer>
+  </div>
+
+  <script>
+    const canvas = document.getElementById("background");
+    const ctx = canvas.getContext("2d");
+
+    canvas.height = window.innerHeight;
+    canvas.width = window.innerWidth;
+
+    const letters = "01";
+    const fontSize = 14;
+    const columns = canvas.width / fontSize;
+    const drops = Array(Math.floor(columns)).fill(1);
+
+    function draw() {
+      ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      ctx.fillStyle = "#00ffff";
+      ctx.font = fontSize + "px monospace";
+
+      for (let i = 0; i < drops.length; i++) {
+        const text = letters[Math.floor(Math.random() * letters.length)];
+        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+          drops[i] = 0;
+        }
+
+        drops[i]++;
+      }
+    }
+
+    setInterval(draw, 33);
+  </script>
+</body>
+</html>
